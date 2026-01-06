@@ -1,0 +1,107 @@
+import { useState } from "react";
+import RadioButton from "./RadioButton";
+import { MdShoppingBag } from "react-icons/md";
+
+const AddToCart = ({cnt, inc, dec}) => {
+
+    // Pending: Favorate button, apis, item details etc 
+
+    let [size, setSize] = useState('Regular');
+    let [addOns, setAddOns] = useState('');
+    return (
+        <>
+            <div className="flex flex-col gap-2">
+                <h1 className="font-bold text-2xl">Double Cheeseburger</h1>
+                <p className="text-[#808694] text-sm">Two flame-grilled beef patties with melted American cheese, fresh onions, pickles, and ketchup on a toasted sesame seed bun. A classic done right</p>
+                <h1 className="font-bold text-2xl text-[#ee4444]">$12.50</h1>
+            </div>
+            <hr className="text-[#808694]"/>
+            <div className="flex flex-col gap-2">
+                <label htmlFor="required" className="flex justify-between">
+                    <h3 className="font-bold">Choice of Size</h3>
+                    <p className="border p-1 bg-[#e1e3e7] rounded-full text-[10px] font-bold text-[#556271]">REQUIRED</p>
+                </label>
+                <div className="flex flex-col gap-2">
+                    <div className={`flex justify-between p-3 shadow rounded-xl ${(size === 'Regular') ? 'border-2 border-[#ee4444] bg-[#fef2f2]' : '' }`} onClick={() => {setSize('Regular')}}
+                    >
+                        <div className="flex gap-2">
+                            
+                            <RadioButton labelName='required' size={size} value={'Regular'}/>
+                            
+                            <span className="text-lg">Regular</span>
+                        </div>
+                        <p>Free</p>
+                    </div>
+                    <div className={`flex justify-between p-3 shadow rounded-xl ${(size === 'Large') ? 'border-2 border-[#ee4444] bg-[#fef2f2]' : '' }`} onClick={() => {setSize('Large')}}>
+                        <div className="flex gap-2">
+                            
+                            <RadioButton labelName='required' size={size} value={'Large'}/>
+
+                            <span className="text-lg">Large</span>
+                        </div>
+                        <p>+2.50</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div className="flex flex-col gap-2">
+                <label htmlFor="addons" className="flex justify-between">
+                    <h3 className="font-bold">Add-ons</h3>
+                    <p className="border p-1 bg-[#e1e3e7] rounded-full text-[10px] font-bold text-[#556271]">Optional</p>
+                </label>
+                <div className="flex flex-col gap-2">
+                    <div className={`flex justify-between p-3 shadow rounded-xl ${(addOns === 'Extra Cheese') ? 'border-2 border-[#ee4444] bg-[#fef2f2]' : '' }`} onClick={() => {setAddOns('Extra Cheese')}}>
+                        <div className="flex gap-2">
+                            <RadioButton labelName='addons' size={addOns} value={'Extra Cheese'}/>
+
+                            <span className="text-lg">Extra Cheese</span>
+                        </div>
+                        <p>+1.0</p>
+                    </div>
+                    <div className={`flex justify-between p-3 shadow rounded-xl ${(addOns === 'Special Sauce') ? 'border-2 border-[#ee4444] bg-[#fef2f2]' : '' }`} onClick={() => { setAddOns('Special Sauce')}}>
+                        <div className="flex gap-2">
+                            <RadioButton labelName='addons' size={addOns} value={'Special Sauce'}/>
+
+                            <span className="text-lg">Special Sauce</span>
+                        </div>
+                        <p>+2.50</p>
+                    </div>
+                    <div className={`flex justify-between p-3 shadow rounded-xl ${(addOns === 'Bacon Strip') ? 'border-2 border-[#ee4444] bg-[#fef2f2]' : '' }`} onClick={() => {setAddOns('Bacon Strip')}}>
+                        <div className="flex gap-2">
+                            <RadioButton labelName='addons' size={addOns} value={'Bacon Strip'}/>
+
+                            <span className="text-lg">Bacon Strip</span>
+                        </div>
+                        <p>+2.50</p>
+                    </div>
+                </div>
+            </div>
+            <div className="flex flex-col gap-3">
+                <label htmlFor="instructions">
+                    <h3 className="font-bold">Special Instructions</h3>
+                </label>
+                <textarea rows={2} name="instructions" placeholder="e.g. No onions, sauce on side..."  className="outline focus:border-2 focus:outline-none focus:border-[#ee4444]   w-full bg-[#f9fafb] p-3 rounded-xl"/>
+            </div>
+
+            <div className="flex flex-col gap-3">
+                <hr className="text-[#808694]"/>
+                <div className="flex justify-between ">
+                    <div className="flex w-[30%] bg-[#f3f4f6] justify-center rounded-xl items-center">
+                        <div className=" w-[30%] flex items-center justify-center h-full w-full cursor-pointer text-2xl hover:text-[#ee4444]" onClick={() => {dec()}}>-</div>
+                        <div className=" w-[30%] flex items-center justify-center h-full w-full">{cnt}</div>
+                        <div className=" w-[30%] flex items-center justify-center h-full w-full cursor-pointer text-2xl hover:text-[#ee4444]" onClick={() => {inc()}}>+</div>
+                    </div>
+                    <button className="flex w-[65%] justify-between bg-[#ee4444] text-white items-center rounded-xl py-3 px-6">
+                        <div>
+                            <p className="text-[10px] font-medium">ADD  TO  CART</p>
+                            3.23
+                        </div>
+                        <div className="rounded-xl p-2 text-xl bg-[#f26969]"><MdShoppingBag /></div>
+                    </button>
+                </div>
+                
+            </div>
+        </>
+    )
+}
+export default AddToCart;

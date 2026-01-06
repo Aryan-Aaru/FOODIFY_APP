@@ -15,7 +15,7 @@ const NavFilter = () => {
             <img className='h-10' src={FoodifyLogo} alt="fodify_Logo" title='foodifyLogo'/>
         </section>
         <section className='flex w-1/2 gap-2 items-center text-lg p-2 rounded-2xl bg-[#f8f9fa] shadow'>
-            <div className='text-[#ea2a33] text-2xl' onClick={() => {console.log(`Search ${search} item`)}}>
+            <div className='text-[#ea2a33] text-2xl cursor-pointer hover:bg-[#fdecec] rounded-full p-1' onClick={() => {console.log(`Search ${search} item`)}}>
                 <IoIosSearch />
             </div>
             <div className='flex items-center w-full'>
