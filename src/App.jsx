@@ -5,13 +5,15 @@ import './App.css'
 import FilterPage from './pages/FilterPage'
 import SpecificDish from './pages/SpecificDish'
 // import navFilter from './components/NavFilter'
+import Admin from './pages/Admin'
 function App() {
 
   return (
     <>
       {/* <FilterPage /> */}
       {/* <navFilter /> */}
-      <SpecificDish />
+      {/* <SpecificDish /> */}
+      <Admin />
     </>
   )
 }
