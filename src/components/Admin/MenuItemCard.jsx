@@ -7,7 +7,7 @@ const MenuItemCard = ({itm}) => {
     return (
         <>
             <section className="flex shadow flex-col h-[490px] rounded-3xl relative bg-white cursor-pointer">
-                <section className="min-h-[60%] rounded-t-3xl overflow-hidden ">
+                <section className="min-h-[60%] relative rounded-t-3xl overflow-hidden ">
                     {/* <div className="absolute top-4 right-4 rounded-full p-2 bg-[#5052518d] text-white">
                         <IoMdHeartEmpty />
                     </div> */}
@@ -16,8 +16,14 @@ const MenuItemCard = ({itm}) => {
                             Popular
                         </div>
                     }
-                    {console.log(itm.picture)}
+                    {console.log(Available+" Available")}
                     <img className="h-full w-full" src={itm.picture.pizza} alt=""/>
+                    {
+                        !Available && 
+                        <div className=" flex absolute top-0 left-0 h-full w-full justify-center items-center bg-[#7e8189a0]"> 
+                            <div className="p-3 border-4 rounded border-white font-bold text-white">SOLD OUT</div>
+                        </div>
+                    }
                 </section>
                 <section className="p-6 flex flex-col gap-3">
                     <div className="flex justify-between">

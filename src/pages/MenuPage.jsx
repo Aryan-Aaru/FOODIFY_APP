@@ -1,13 +1,13 @@
 import { useState } from "react";
-import MenuItemCnt from "./MenuItemCnt";
+import MenuItemCnt from "../components/Admin/MenuItemCnt";
 import { FaBoxArchive } from "react-icons/fa6";
 import { FaCheckCircle } from "react-icons/fa";
 import { BsBan } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa";
 import { IoIosSearch } from "react-icons/io";
 import { RxCross1 } from "react-icons/rx";
-import MenuItemCard from "./MenuItemCard";
-import pizza from "../../assets/pizzaSlice.jpg";
+import MenuItemCard from "../components/Admin/MenuItemCard";
+import pizza from "../assets/pizzaSlice.jpg";
 const MenuPage = () => {
 
     let [overallView, setOverallView] = useState([

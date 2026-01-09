@@ -12,10 +12,12 @@ const MenuItemCnt = ({itm}) => {
     return (
         <section className="rounded-xl flex flex-col gap-4 p-6 bg-white">
             <div className="flex justify-between">
-                <span className={`rounded p-3 text-xl ${
-                    (title === 'TOTAL') ? 'bg-[#eff6ff] text-[#3b82f6]' : 
-                    (title === 'ACTIVE') ? 'bg-[#f0fdf4] text-[#22c55e]' :
-                    (title === 'SOLD OUT') ? 'bg-[#fff7ed] text-[#fa8833]' : ''} `}>{icon}</span>
+                <span className={`rounded p-3 text-2xl ${
+                    (title === 'TOTAL' || title === 'Active Orders') ? 'bg-[#eff6ff] text-[#3b82f6]' : 
+                    (title === 'ACTIVE' || title === 'Total Sales') ? 'bg-[#f0fdf4] text-[#22c55e]' :
+                    (title === 'SOLD OUT' || title === 'Pending') ? 'bg-[#fff7ed] text-[#fa8833]' : 
+                    (title === 'Restaurants') ? 'bg-[#e0e7ff] text-[#4d3be6]' : ''} `}>{icon}</span>
+                    
                 <span className="text-[#adb3bd] font-bold text-sm">{title}</span>
             </div>
             <div>
