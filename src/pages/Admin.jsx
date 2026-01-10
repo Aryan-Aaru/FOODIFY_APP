@@ -3,6 +3,7 @@ import AdminAside from "../components/Admin/AdminAside";
 import AdminNav from "../components/Admin/AdminNav"
 import MenuPage from "./MenuPage";
 import AdminDasboard from "./AdminDasboard";
+import AdminRestaurent from "./AdminRestaurent";
 const Admin = () => {
     let [page, setPage] = useState('Dashboard');
 
@@ -19,7 +20,7 @@ const Admin = () => {
                     (page === 'Dashboard') ? <AdminDasboard /> : 
                     (page === 'Orders') ? <h1>Order Page</h1> : 
                     (page === 'Menu_Management') ? <MenuPage /> : 
-                    (page === 'Restaurants')? <h1>Restaurants Page</h1> : 
+                    (page === 'Restaurants')? <AdminRestaurent /> : 
                     (page === 'Earnings')? <h1>Earning Page</h1> : <h1>Page Not Found</h1>
                 }
             </div>

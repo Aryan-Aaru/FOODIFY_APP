@@ -4,14 +4,14 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import FilterPage from './pages/FilterPage'
 import SpecificDish from './pages/SpecificDish'
-// import navFilter from './components/NavFilter'
+import NavFilter from './components/NavFilter'
 import Admin from './pages/Admin'
 function App() {
 
   return (
     <>
       {/* <FilterPage /> */}
-      {/* <navFilter /> */}
+      {/* <NavFilter /> */}
       {/* <SpecificDish /> */}
       <Admin />
     </>
