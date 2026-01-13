@@ -4,6 +4,8 @@ import AdminNav from "../components/Admin/AdminNav"
 import MenuPage from "./MenuPage";
 import AdminDasboard from "./AdminDasboard";
 import AdminRestaurent from "./AdminRestaurent";
+import OrderManagement from "./OrderManagement";
+import EarningPage from "./EarningPage";
 const Admin = () => {
     let [page, setPage] = useState('Dashboard');
 
@@ -18,10 +20,10 @@ const Admin = () => {
                 <AdminNav name={page}/>
                 {
                     (page === 'Dashboard') ? <AdminDasboard /> : 
-                    (page === 'Orders') ? <h1>Order Page</h1> : 
+                    (page === 'Orders') ? <OrderManagement /> : 
                     (page === 'Menu_Management') ? <MenuPage /> : 
                     (page === 'Restaurants')? <AdminRestaurent /> : 
-                    (page === 'Earnings')? <h1>Earning Page</h1> : <h1>Page Not Found</h1>
+                    (page === 'Earnings')? <EarningPage /> : <h1>Page Not Found</h1>
                 }
             </div>
             

@@ -13,8 +13,12 @@ const RestarentCard = ({itm}) => {
     console.log(itm+" yes ocme");
     return (
         <div className="bg-white shadow flex p-6 rounded-3xl gap-4">
-            <div className="border h-[80%] w-[35%] rounded-xl overflow-hidden border-red-500">
+            <div className=" relative h-[80%] w-[35%] rounded-xl overflow-hidden border-red-500">
                 <img src={itm.picture} alt="restaurent photo" className="w-fit h-fit"/>
+                {
+                    (itm.status === 'Closed') ? 
+                        <div className=" absolute left-0 top-0 w-full h-full bg-[#00000098]"> </div> : <></>
+                }
             </div>
             <div className=" ">
                 <h1 className="font-bold text-2xl">{itm.name ? itm.name : "Title"}</h1>
