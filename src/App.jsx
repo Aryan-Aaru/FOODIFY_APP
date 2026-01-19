@@ -12,8 +12,8 @@ function App() {
     <>
       {/* <FilterPage /> */}
       {/* <NavFilter /> */}
-      {/* <SpecificDish /> */}
-      <Admin />
+      <SpecificDish />
+      {/* <Admin /> */}
     </>
   )
 }

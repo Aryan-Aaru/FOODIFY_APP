@@ -1,0 +1,79 @@
+{
+    "users" : [
+        {
+            "id" : 1, 
+            "name" : "Aqueeb",
+            "email" : "aqueeb@gmail.com",
+            "password" : "aqueeb123",
+            "role" : "customer",
+            "profile_pic" : "",
+            "phone_no" : "9014480356",
+            "addressId" : [],
+            "cart" : 1,
+            "orders" : [],
+            "whislist" : 1 
+        },
+        {
+            "id" : 2, 
+            "name" : "Ahmed",
+            "email" : "ahmed@gmail.com",
+            "password" : "ahmed123",
+            "role" : "owner",
+            "profile_pic" : "",
+            "phone_no" : "9705881127",
+            "addressId" : [],
+            "cart" : 2,
+            "orders" : [],
+            "whislist" : 2 
+        }
+    ],
+    "user_address" : [
+
+    ],
+    "restaurent" : [
+
+    ],
+    "menu" : [
+
+    ],
+    "food" : [
+        {
+            "foodId" : 1, 
+            "menu_id" : 1,
+            "name" : "Double Cheeseburger",
+            "picture" : "http://localhost:5173/assets/pizzaSlice.jpg",
+            "description" : "Two flame-grilled beef patties with melted American cheese, fresh onions, pickles, and ketchup on a toasted sesame seed bun. A classic done right",
+            "price" : 12.50,
+            "offer" : "",
+            "popular" : false,
+            "rated" : 4,
+            "availabe" : true, 
+            "category" : "Non-Veg",
+            "course" : "dessert"
+        }
+    ],
+    "extras" : [
+
+    ],
+    "Addones" : [
+
+    ],
+    "orders" : [
+
+    ],
+    "order_items" : [
+
+    ],
+    "cart" : [
+
+    ],
+    "cart_items" : [
+
+    ],
+    "whislist" : [
+
+    ], 
+    "whislist_items" : [
+
+    ]
+}
