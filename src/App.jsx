@@ -36,11 +36,15 @@
 
 import React from 'react'
 import MyCart from './Pages/MyCart'
+import Restaurent from './Pages/Restaurent'
+import OrderConfirm from './Pages/OrderConfirm'
 
 const App = () => {
   return (
     <div>
-      <MyCart />  
+      {/* <MyCart />   */}
+      {/* <Restaurent /> */}
+      <OrderConfirm />
     </div>
   )
 }

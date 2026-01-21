@@ -28,7 +28,7 @@ const PaymentSummary = () => {
 </div>
 
 
-<button className="w-full bg-red-500 text-white py-4 rounded-xl font-semibold">
+<button className="w-full bg-red-500 hover:text-black cursor-pointer text-white py-4 rounded-xl font-semibold">
 Checkout $34.97
 </button>
 
