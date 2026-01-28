@@ -4,14 +4,14 @@ import { RxCross1 } from "react-icons/rx";
 import { FaRegMoon, FaUser } from "react-icons/fa";
 import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
-
-const NavFilter = () => {
+const RestaurentNav = () => {
     
     let [theme, setTheme] = useState(false);
     let [search, setSearch] = useState('')
     const navigate = useNavigate();
+
     return ( 
-    <section className={`flex ${(theme) ? "bg-black": "bg-white"} justify-between px-10 py-4 items-center `}>
+    <section className={` flex ${(theme) ? "bg-black": "bg-white"} justify-between px-10 py-3 items-center `}>
         <section className='h-full cursor-pointer' onClick={() => console.log("move to home page")}>
             <img className='h-10' src={FoodifyLogo} alt="fodify_Logo" title='foodifyLogo'/>
         </section>
@@ -20,7 +20,7 @@ const NavFilter = () => {
                 <IoIosSearch />
             </div>
             <div className='flex items-center w-full'>
-                <input className='w-full focus:outline-none' type="text" placeholder='Enter food name or restuarent name' value={search} onChange={(e) => {setSearch(e.target.value)}} />
+                <input className='w-full focus:outline-none' type="text" value={search} placeholder='Enter food name or restuarent name' onChange={(e) => {setSearch(e.target.value)}} />
                 {
                     search &&
                     <RxCross1 className='hover:text-[#ea2a33]' onClick={() => {setSearch('');console.log('Clear the item')}}/>
@@ -37,4 +37,4 @@ const NavFilter = () => {
     </section>
     )
 }
-export default NavFilter;
+export default RestaurentNav;

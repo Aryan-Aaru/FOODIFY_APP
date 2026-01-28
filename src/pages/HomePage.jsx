@@ -5,35 +5,42 @@ import FilterComponent from "../components/FilterComponent";
 import RestaurantsCard from "../components/RestaurentCard";
 const HomePage = () => {
 
-    let items = [
+    let items  = [
         {
-            "picture" : {sushi},
-            "RestaurentName" : "Green Bowl & Co.",
-            "RestaurentInfo" : ["Healthy", "vegan"],
-            "timetaken" : "25-50 min", 
-            "feetaken" : "free",
-            "favorate" : false,
-            "rating" : 4.8
+            id:1,
+            picture : {sushi},
+            RestaurentName : "Green Bowl & Co.",
+            RestaurentInfo : ["Healthy", "vegan"],
+            timetaken : "25-50 min", 
+            feetaken : "free",
+            favorate : false,
+            rating : 4.8
         },
         {
-            "picture" : {sushi},
-            "RestaurentName" : "Green Bowl & Co.",
-            "RestaurentInfo" : ["Healthy", "vegan"],
-            "timetaken" : "25-50 min", 
-            "feetaken" : "free",
-            "favorate" : false,
-            "rating" : 4.8
+            id:3,
+            picture : {sushi},
+            RestaurentName : "Aryan",
+            RestaurentInfo : ["Healthy", "vegan"],
+            timetaken : "25-50 min", 
+            feetaken : "free",
+            favorate : true,
+            rating : 4.8
         },
         {
-            "picture" : {sushi},
-            "RestaurentName" : "Green Bowl & Co.",
-            "RestaurentInfo" : ["Healthy", "vegan"],
-            "timetaken" : "25-50 min", 
-            "feetaken" : "free",
-            "favorate" : false,
-            "rating" : 4.8
+            id:2,
+            picture : {sushi},
+            RestaurentName : "Bro",
+            RestaurentInfo : ["Healthy", "vegan"],
+            timetaken : "25-50 min", 
+            feetaken : "free",
+            favorate : false,
+            rating : 4.8
         }
     ]
+
+    const handleClick = (restaurant) => {
+        navigate(`/restaurent/${restaurant.id}`, { state: { restaurant } });
+    };
     return (
         <div className="bg-[#f9fafb] min-h-svh">
             <NavFilter />
@@ -80,6 +87,12 @@ const HomePage = () => {
                                     return <RestaurantsCard itm={item} />
                                 })
                             }
+
+                            {/* {restaurants.map(r => (
+                                <div key={r.id} onClick={() => handleClick(r)}>
+                                {r.name}
+                                </div>
+                            ))} */}
                             {/* <RestaurantsCard /> */}
                         </div>
                     </section>
@@ -90,3 +103,4 @@ const HomePage = () => {
 }
 
 export default HomePage;
+

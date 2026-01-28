@@ -1,5 +1,7 @@
 import { IoMdHeartEmpty } from "react-icons/io";
+import { Navigate, useNavigate } from "react-router-dom";
 const RestaurantsCard = ({itm}) => {
+    let navigate = useNavigate();
 
     // {
     //         "picture" : {sushi},
@@ -10,10 +12,14 @@ const RestaurantsCard = ({itm}) => {
     //         "favorate" : false,
     //         "rating" : 4.8
     //     }
+
+    // const { id } = useParams();       // restaurant id from URL
+    // const location = useLocation();   // access passed state
+    // const restaurant = location.state?.restaurant;
     console.log(itm.picture);
     return(
         
-        <section className="flex p-4 h-[180px] gap-4 w-full shadow-xl rounded-xl bg-white">
+        <section className="flex p-4 h-[180px] gap-4 w-full shadow-xl rounded-xl bg-white" onClick={() => {navigate('/restaurent')}}>
             <div className="rounded-xl overflow-hidden w-[25%] h-full">
                 <img src={itm.picture.sushi} alt="food image" className="h-full w-full" />
             </div>
