@@ -3,12 +3,12 @@ import { IoIosSearch, IoMdBasket } from "react-icons/io";
 import { RxCross1 } from "react-icons/rx";
 import { FaRegMoon, FaUser } from "react-icons/fa";
 import { useState } from 'react';
-
+import { useNavigate } from "react-router-dom";
 const RestaurentNav = () => {
     
     let [theme, setTheme] = useState(false);
     let [search, setSearch] = useState('')
-
+  const navigate = useNavigate();
     return ( 
     <section className={` flex ${(theme) ? "bg-black": "bg-white"} justify-between px-10 py-3 items-center `}>
         <section className='h-full cursor-pointer' onClick={() => console.log("move to home page")}>
@@ -30,7 +30,9 @@ const RestaurentNav = () => {
         </section>
         <section className="flex list-none gap-7 text-lg w-[20%] items-center justify-end">
             <li className={`cursor-pointer rounded-full hover:bg-[#fdecec] hover:text-[#ea2a33] ${(theme) ? 'text-white' : 'text-black'} h-full p-2`} onClick={() => {setTheme(!theme);console.log("change the theme")}}><FaRegMoon /></li>
-            <li className={`cursor-pointer h-full text-lg rounded-full hover:bg-[#fdecec] ${(theme) ? 'text-white' : 'text-black'} hover:text-[#ea2a33] p-2 `}><IoMdBasket /></li>
+            <li className={`cursor-pointer h-full text-lg rounded-full hover:bg-[#fdecec] ${(theme) ? 'text-white' : 'text-black'} hover:text-[#ea2a33] p-2 `}        
+            onClick={() => navigate("/cart")}>  <IoMdBasket /></li>
+
             <li className={`cursor-pointer h-full flex gap-2 px-2 py-1 rounded-full  hover:bg-[#fdecec] hover:text-[#ea2a33] items-center ${(theme) ? 'text-white' : 'text-black'}`} ><FaUser /><p>Profile</p></li>
         </section>
     </section>

@@ -34,19 +34,21 @@
 //   )
 // }
 
-import React from 'react'
-import MyCart from './Pages/MyCart'
-import Restaurent from './Pages/Restaurent'
-import OrderConfirm from './Pages/OrderConfirm'
+import {BrowserRouter , Routes, Route } from "react-router-dom";
+import MyCart from "./Pages/MyCart";
+import Restaurent from "./Pages/Restaurent";
+import OrderConfirm from "./Pages/OrderConfirm";
 
 const App = () => {
   return (
-    <div>
-      {/* <MyCart />   */}
-      {/* <Restaurent /> */}
-      <OrderConfirm />
-    </div>
-  )
-}
+      <BrowserRouter>
+          <Routes>
+            <Route path="/restaurent" element={<Restaurent />} />
+            <Route path="/cart" element={<MyCart />} />
+            <Route path="/order-confirm" element={<OrderConfirm />} />
+          </Routes>
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;

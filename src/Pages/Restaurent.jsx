@@ -4,12 +4,13 @@ import { FaRegHeart } from "react-icons/fa";
 import { IoMdShare } from "react-icons/io";
 import { useState } from "react";
 import RestaurentItems from "../components/RestaurentItems";
+import { useNavigate } from "react-router-dom";
 const Restaurent = () => {
 
     let obj = ['Popular Items', 'Veg Items', 'Non-veg Items', 'Gluten-Free Items']
 
     let [selected, setSelected] = useState('Popular Items');
-
+    const navigate = useNavigate();
     
 
     return (
@@ -60,6 +61,8 @@ const Restaurent = () => {
                         <RestaurentItems itemName={selected} />
                     </div>
                 </div>
+
+          
             </section>
         </section>
     )
