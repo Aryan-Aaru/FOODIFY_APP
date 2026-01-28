@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:8080";
+const url = "http://localhost:8081";
 
 export const getFoodbyId = (foodId) => {   
   return axios.get(`${url}/food`)    

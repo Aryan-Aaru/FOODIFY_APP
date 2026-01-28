@@ -4,14 +4,15 @@ import { MdReceiptLong } from "react-icons/md";
 import { MdRestaurantMenu } from "react-icons/md";
 import { MdStoreMallDirectory } from "react-icons/md";
 import { MdPayments } from "react-icons/md";
+import { NavLink } from 'react-router-dom';
 
-const AdminAside = ({select, page}) => {
-    let adminOptions = [
-        {icon:<RxDashboard />, label: 'Dashboard'},
-        {icon:<MdReceiptLong />, label: 'Orders'}, 
-        {icon:<MdRestaurantMenu />, label: 'Menu_Management'}, 
-        {icon:<MdStoreMallDirectory/>, label: 'Restaurants'}, 
-        {icon:<MdPayments />, label: 'Earnings'}
+const AdminAside = () => {
+    const adminOptions = [
+        { icon: <RxDashboard />, label: "Dashboard", path: "/admin/dashboard" },
+        { icon: <MdReceiptLong />, label: "Orders", path: "/admin/orders" },
+        { icon: <MdRestaurantMenu />, label: "Menu_Management", path: "/admin/menu" },
+        { icon: <MdStoreMallDirectory />, label: "Restaurants", path: "/admin/restaurants" },
+        { icon: <MdPayments />, label: "Earnings", path: "/admin/earnings" },
     ];
     return (
         <aside className='w-[20%] min-h-[100vh] bg-white'>
@@ -21,7 +22,17 @@ const AdminAside = ({select, page}) => {
             <hr className="text-[#808694] px-2"/>
             <div className='h-[80%] pt-4 flex  bg-[] flex-col gap-2'>
                 {
-                    adminOptions.map((items, index) => {return <li className={`flex cursor-pointer rounded items-center text-lg p-2 font-bold ${(page === items.label) ? 'text-[#ea2a33] bg-[#fdecec]' : 'hover: hover:text-[#ea2a33]' }  gap-3`} onClick={() => {select(items.label)}} key={index}> <div className='w-[25%] text-lg flex justify-end'>{items.icon}</div> <p className=' w-[40%]'>{items.label}</p></li>;
+                    adminOptions.map((item, index) => {return  <NavLink
+            key={index}
+            to={item.path}
+            className={({ isActive }) =>
+              `flex items-center gap-3 p-2 font-bold rounded cursor-pointer
+               ${isActive ? "text-[#ea2a33] bg-[#fdecec]" : "hover:text-[#ea2a33]"}`
+            }
+          >
+            <div className="w-[25%] text-lg flex justify-end">{item.icon}</div>
+            <p className="w-[40%]">{item.label}</p>
+          </NavLink>;
                     })
                 }
             </div>

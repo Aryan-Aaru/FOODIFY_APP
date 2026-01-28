@@ -22,7 +22,7 @@ const NavFilter = () => {
                 <input className='w-full focus:outline-none' type="text" placeholder='Enter food name or restuarent name' value={search} onChange={(e) => {setSearch(e.target.value)}} />
                 {
                     search &&
-                    <RxCross1 className='hover:text-[#ea2a33]' onClick={() => {setSearch('');console.log('Clear the item')}}/>
+                    <RxCross1 className='hover:text-[#ea2a33] cursor-pointer' onClick={() => {setSearch('');console.log('Clear the item')}}/>
                 }
                 
             </div>

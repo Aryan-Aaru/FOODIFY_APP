@@ -38,7 +38,7 @@ const AddToCart = ({food, cnt, inc, dec}) => {
                             
                             <RadioButton labelName='required' size={size} value={'Regular'}/>
                             
-                            <span className="text-lg">Regular</span>
+                            <span className="">Regular</span>
                         </div>
                         <p>Free</p>
                     </div>
@@ -47,7 +47,7 @@ const AddToCart = ({food, cnt, inc, dec}) => {
                             
                             <RadioButton labelName='required' size={size} value={'Large'}/>
 
-                            <span className="text-lg">Large</span>
+                            <span className="">Large</span>
                         </div>
                         <p>+2.50</p>
                     </div>
@@ -64,7 +64,7 @@ const AddToCart = ({food, cnt, inc, dec}) => {
                         <div className="flex gap-2">
                             <RadioButton labelName='addons' size={addOns} value={'Extra Cheese'}/>
 
-                            <span className="text-lg">Extra Cheese</span>
+                            <span className="">Extra Cheese</span>
                         </div>
                         <p>+1.0</p>
                     </div>
@@ -72,7 +72,7 @@ const AddToCart = ({food, cnt, inc, dec}) => {
                         <div className="flex gap-2">
                             <RadioButton labelName='addons' size={addOns} value={'Special Sauce'}/>
 
-                            <span className="text-lg">Special Sauce</span>
+                            <span className="">Special Sauce</span>
                         </div>
                         <p>+2.50</p>
                     </div>
@@ -80,7 +80,7 @@ const AddToCart = ({food, cnt, inc, dec}) => {
                         <div className="flex gap-2">
                             <RadioButton labelName='addons' size={addOns} value={'Bacon Strip'}/>
 
-                            <span className="text-lg">Bacon Strip</span>
+                            <span className="">Bacon Strip</span>
                         </div>
                         <p>+2.50</p>
                     </div>
@@ -101,7 +101,7 @@ const AddToCart = ({food, cnt, inc, dec}) => {
                         <div className=" w-[30%] flex items-center justify-center h-full w-full">{cnt}</div>
                         <div className=" w-[30%] flex items-center justify-center h-full w-full cursor-pointer text-2xl hover:text-[#ee4444]" onClick={() => {(size === 'Large') ? setPrice(price+food.price+2.50): setPrice(price+food.price); inc();}}>+</div>
                     </div>
-                    <button className="flex w-[65%] justify-between bg-[#ee4444] text-white items-center rounded-xl py-3 px-6">
+                    <button className="flex cursor-pointer w-[65%] justify-between bg-[#ee4444] text-white hover:text-black hover:transition-all items-center rounded-xl py-3 px-6">
                         <div>
                             <p className="text-[10px] font-medium">ADD  TO  CART</p>
                             3.23

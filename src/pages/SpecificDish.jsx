@@ -27,7 +27,6 @@ const SpecificDish = () => {
         });
     }, []);
   
-    // console.log(food.picture);
     if (!food) {
     return (
         <section className="bg-[#f8f9fa] min-h-screen flex items-center justify-center">
@@ -43,13 +42,13 @@ const SpecificDish = () => {
             <section className="flex-wrap border-red-600 justify-center w-full p-8 flex items-start gap-15">
                 
                 <section className=" h-[500px] w-[650px] flex flex-col gap-4 border-blue-500">
-                    <div className="h-[78%] border relative overflow-hidden rounded-3xl">
+                    <div className="h-[75%] border border-red-600 relative overflow-hidden rounded-3xl">
                         <div className="absolute top-4 right-4 rounded-full p-2 bg-[#5052518d] text-white">
                             <IoMdHeartEmpty />
                         </div>
                         <img src={food.picture} alt="" className="h-full w-full"/>
                     </div>
-                    <div className="flex h-[18%] gap-3">
+                    <div className="flex h-[15%] gap-3">
                         <div className=" rounded-xl h-full w-[20%] overflow-hidden">
                             <img src={food.picture} alt="" className="h-full w-full"/>
                         </div>

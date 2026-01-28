@@ -58,10 +58,10 @@ const FilterComponent = () => {
                 </section>
                 <section>
                     <div className="font-bold">Sort by</div>
-                    <div className="list-none flex flex-wrap gap-2 mt-2">
+                    <div className="list-none flex flex-wrap gap-3 mt-2">
                         {
                             sortby.map((item, idx) =>{
-                                return <li className={`cursor-pointer py-2 px-4 border rounded-full ${(handleAppyColor(idx)) ? 'bg-[#ea2a33] text-white' : ''}`} onClick={() => {handleSortBy(idx); console.log(idx)}} >{item}</li>
+                                return <li className={`cursor-pointer py-2 px-3 border text-sm rounded-full ${(handleAppyColor(idx)) ? 'bg-[#ea2a33] text-white' : ''}`} onClick={() => {handleSortBy(idx); console.log(idx)}} >{item}</li>
                             })
                         }
                     </div>
@@ -75,7 +75,7 @@ const FilterComponent = () => {
                         <li className={`cursor-pointer w-[25%] p-2 rounded text-center ${(money === 'four')? 'bg-white text-[#ea2a33]': ''}`} onClick={()=>{if(money !== 'four'){setMoney('four')}else{setMoney('')}}}>$$$$</li>
                     </div>
                 </section>
-                <section >
+                {/* <section >
                     <div className="font-bold">Clusines</div>
                     <div className="list-none text-3xl gap-3 flex flex-wrap mt-2">
                         <li className=" p-4 rounded-[45%] bg-[#f8f9fa]"><MdOutlineLocalPizza /></li>
@@ -87,14 +87,14 @@ const FilterComponent = () => {
                         <li className=" p-4 rounded-[45%] bg-[#f8f9fa]"><PiOrangeLight /></li>
                         <li className=" p-4 rounded-[45%] bg-[#f8f9fa]"><ImSpoonKnife /></li>
                     </div>
-                </section>
+                </section> */}
                 <section className="">
                     <div className="font-bold">Dietary</div>
                     <label htmlFor="" className=""> 
                         <section className="flex justify-between p-2 cursor-pointer" onClick={() => {setVegetarian(!vegetarian)}}>
                             <div className="flex gap-3 items-center">
                                 <PiLeafLight className="p-2 font-black bg-[#dcfce7] text-[#3fb76f] text-4xl rounded-full"/>
-                                <p className="font-medium text-lg">Vegetarian</p>
+                                <p className="font-medium ">Vegetarian</p>
                             </div>
                             <div className="flex items-center" >
                                 <div className={`flex p-1 items-center w-[45px] h-[65%] ${(vegetarian) ? 'bg-[#ee4444] justify-end': 'bg-[#e5e7eb]'}  rounded-2xl`}> <div className="w-[50%] bg-white h-full rounded-full"></div></div>
@@ -105,7 +105,7 @@ const FilterComponent = () => {
                         <section className="flex justify-between p-2" onClick={() => {setVegan(!vegan)}}>
                             <div className="flex gap-3 items-center">
                                 <PiFlowerLotusFill className="p-2 font-black bg-[#dcfce7] text-[#3fb76f] text-4xl rounded-full"/>
-                                <p className="font-medium text-lg">Vegan</p>
+                                <p className="font-medium ">Vegan</p>
                             </div>
                             <div className="flex items-center" >
                                 <div className={`flex p-1 items-center w-[45px] h-[65%] ${(vegan) ? 'bg-[#ee4444] justify-end': 'bg-[#e5e7eb]'}  rounded-2xl`}> <div className="w-[50%] bg-white h-full rounded-full"></div></div>
@@ -116,7 +116,7 @@ const FilterComponent = () => {
                         <section className="flex justify-between p-2" onClick={() => {setGlutenFree(!gluten_Free)}}>
                             <div className="flex gap-3 items-center">
                                 <MdGrain className="p-2 font-black bg-[#ffedd5] text-[#ea5312] text-4xl rounded-full"/>
-                                <p className="font-medium text-lg">Gluten-Free</p>
+                                <p className="font-medium ">Gluten-Free</p>
                             </div>
                             <div className="flex items-center" >
                                 <div className={`flex p-1 items-center w-[45px] h-[65%] ${(gluten_Free) ? 'bg-[#ee4444] justify-end': 'bg-[#e5e7eb]'}  rounded-2xl`}> <div className="w-[50%] bg-white h-full rounded-full"></div></div>
