@@ -243,48 +243,9 @@ const EditProfileView = ({ user, onSave, onBack }) => {
     </SectionCard>
   );
 };
-
-// --- Main App Component ---
-
-export default function App() {
-  const [activeView, setActiveView] = useState('dashboard'); // 'dashboard', 'addresses', 'payment', 'profile'
-  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
-  
-  // User State
-  const [user, setUser] = useState({
-    name: "Alex Johnson",
-    phone: "+1 (555) 012-3456",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
-    stats: { orders: 24, rating: 4.9, saved: 120 }
-  });
-
-  const handleUpdateProfile = (newData) => {
-    setUser(prev => ({...prev, ...newData}));
-    setActiveView('dashboard');
-  };
-
-  const handleLogout = () => {
-    if (confirm("Are you sure you want to log out?")) {
-      console.log("Logged out");
-    }
-  };
-
-  // Mock Favorites
-  const favorites = [
-    { id: 1, name: 'Burger King', desc: 'Whopper Meal', image: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=150&q=80', logo: '🍔' },
-    { id: 2, name: 'Pizza Hut', desc: 'Pepperoni Pizza', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=150&q=80', logo: '🍕' },
-    { id: 3, name: 'Sushi Master', desc: 'Dragon Roll', image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=150&q=80', logo: '🍱' },
-  ];
-
+const ProfilePanel = ({ user,setActiveView,handleLogout }) => {
   return (
-    <div className="min-h-screen bg-[#F3F4F6] font-sans text-gray-800 pb-10">
-      
-      <div className="max-w-7xl mx-auto p-4 md:p-6 lg:p-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10">
-          
-          {/* --- Left Sidebar (Profile) --- */}
-          {/* This column spans 4 on desktop, keeping profile always on left for large screens */}
-          <div className="md:col-span-4 lg:col-span-3">
+<div className="md:col-span-4 lg:col-span-3">
             <div className="bg-white rounded-3xl p-8 shadow-sm flex flex-col items-center text-center relative overflow-hidden sticky top-6">
               
               {/* Profile Image Area */}
@@ -337,7 +298,62 @@ export default function App() {
                 Log Out
               </button>
             </div>
-          </div>
+          </div>)}
+
+// --- Main App Component ---
+
+export default function App() {
+  const [activeView, setActiveView] = useState('dashboard'); // 'dashboard', 'addresses', 'payment', 'profile'
+  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+  
+  // User State
+  const [user, setUser] = useState({
+    name: "Alex Johnson",
+    phone: "+1 (555) 012-3456",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
+    stats: { orders: 24, rating: 4.9, saved: 120 }
+  });
+
+  const handleUpdateProfile = (newData) => {
+    setUser(prev => ({...prev, ...newData}));
+    setActiveView('dashboard');
+    // axios.post(`/api/user/${user.id}/updateprofile/`, newData)
+    //   .then(response => {
+    //     setUser(response.data);
+    //     console.log("Profile updated successfully");
+    //   })
+    //   .catch(error => {
+    //     console.error("Error updating profile:", error);
+    //   }); 
+    // }
+  };
+
+  const handleLogout = () => {
+    if (confirm("Are you sure you want to log out?")) {
+      console.log("Logged out");
+    }
+  };
+
+  // Mock Favorites
+  const favorites = [
+    { id: 1, name: 'Burger King', desc: 'Whopper Meal', image: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=150&q=80', logo: '🍔' },
+    { id: 2, name: 'Pizza Hut', desc: 'Pepperoni Pizza', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=150&q=80', logo: '🍕' },
+    { id: 3, name: 'Sushi Master', desc: 'Dragon Roll', image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=150&q=80', logo: '🍱' },
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#F3F4F6] font-sans text-gray-800 pb-10">
+      
+      <div className="max-w-7xl mx-auto p-4 md:p-6 lg:p-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10">
+          
+          {/* --- Left Sidebar (Profile) --- */}
+          {/* This column spans 4 on desktop, keeping profile always on left for large screens */}
+          <ProfilePanel
+            user={user}
+            setActiveView={setActiveView}
+            handleLogout={handleLogout}
+          />
 
           {/* --- Right Main Content --- */}
           {/* This area changes based on interaction */}
@@ -354,7 +370,7 @@ export default function App() {
                       onClick={() => setActiveView('profile')} 
                       className="text-sm font-semibold text-red-500 hover:text-red-600 transition"
                     >
-                      Edit details
+                      Edit Profile
                     </button>
                   }
                 >
