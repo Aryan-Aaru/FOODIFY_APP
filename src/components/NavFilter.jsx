@@ -32,7 +32,7 @@ const NavFilter = () => {
         <section className="flex list-none gap-7 text-lg w-[20%] items-center justify-end">
             <li className={`cursor-pointer rounded-full hover:bg-[#fdecec] hover:text-[#ea2a33] ${(theme) ? 'text-white' : 'text-black'} h-full p-2`} onClick={() => {setTheme(!theme);console.log("change the theme")}}><FaRegMoon /></li>
             <li className={`cursor-pointer h-full text-lg rounded-full hover:bg-[#fdecec] ${(theme) ? 'text-white' : 'text-black'} hover:text-[#ea2a33] p-2 `} onClick={() => {navigate('/cart')}}><IoMdBasket /></li>
-            <li className={`cursor-pointer h-full flex gap-2 px-2 py-1 rounded-full  hover:bg-[#fdecec] hover:text-[#ea2a33] items-center ${(theme) ? 'text-white' : 'text-black'}`} ><FaUser /><p>Profile</p></li>
+            <li className={`cursor-pointer h-full flex gap-2 px-2 py-1 rounded-full  hover:bg-[#fdecec] hover:text-[#ea2a33] items-center ${(theme) ? 'text-white' : 'text-black'}`} onClick={() => {navigate('/profile')}} ><FaUser /><p>Profile</p></li>
         </section>
     </section>
     )
