@@ -14,38 +14,38 @@ const HomePage = () => {
     const [size] = useState(5);
     const [totalPages, setTotalPages] = useState(0);
     const [loading, setLoading] = useState(false);
-    let items  = [
-        {
-            id:1,
-            picture : {sushi},
-            RestaurentName : "Green Bowl & Co.",
-            RestaurentInfo : ["Healthy", "vegan"],
-            timetaken : "25-50 min", 
-            feetaken : "free",
-            favorate : false,
-            rating : 4.8
-        },
-        {
-            id:3,
-            picture : {sushi},
-            RestaurentName : "Aryan",
-            RestaurentInfo : ["Healthy", "vegan"],
-            timetaken : "25-50 min", 
-            feetaken : "free",
-            favorate : true,
-            rating : 4.8
-        },
-        {
-            id:2,
-            picture : {sushi},
-            RestaurentName : "Bro",
-            RestaurentInfo : ["Healthy", "vegan"],
-            timetaken : "25-50 min", 
-            feetaken : "free",
-            favorate : false,
-            rating : 4.8
-        }
-    ]
+    // let items  = [
+    //     {
+    //         id:1,
+    //         picture : {sushi},
+    //         RestaurentName : "Green Bowl & Co.",
+    //         RestaurentInfo : ["Healthy", "vegan"],
+    //         timetaken : "25-50 min", 
+    //         feetaken : "free",
+    //         favorate : false,
+    //         rating : 4.8
+    //     },
+    //     {
+    //         id:3,
+    //         picture : {sushi},
+    //         RestaurentName : "Aryan",
+    //         RestaurentInfo : ["Healthy", "vegan"],
+    //         timetaken : "25-50 min", 
+    //         feetaken : "free",
+    //         favorate : true,
+    //         rating : 4.8
+    //     },
+    //     {
+    //         id:2,
+    //         picture : {sushi},
+    //         RestaurentName : "Bro",
+    //         RestaurentInfo : ["Healthy", "vegan"],
+    //         timetaken : "25-50 min", 
+    //         feetaken : "free",
+    //         favorate : false,
+    //         rating : 4.8
+    //     }
+    // ]
 
     const fetchRestaurants = async () => {
         setLoading(true);
