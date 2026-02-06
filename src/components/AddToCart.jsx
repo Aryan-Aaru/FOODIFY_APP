@@ -16,11 +16,11 @@ const AddToCart = ({food, cnt, inc, dec}) => {
     
     return (
         <>
-            <div className="flex flex-col gap-2">
+            {/* <div className="flex flex-col gap-2">
                 <h1 className="font-bold text-2xl">{food.food_name}</h1>
                 <p className="text-[#808694] text-sm">{food.food_description}</p>
                 <h1 className="font-bold text-2xl text-[#ee4444]">{price}</h1>
-            </div>
+            </div> */}
             <hr className="text-[#808694]"/>
             <div className="flex flex-col gap-2">
                 <label htmlFor="required" className="flex justify-between">
