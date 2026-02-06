@@ -27,6 +27,7 @@ import HomePage from "./pages/HomePage";
 import Restaurent from "./Pages/Restaurent";
 import OrderConfirm from "./Pages/OrderConfirm";
 import MyCart from "./Pages/MyCart";
+import Profile from './pages/Profile'
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
     // </>
     <BrowserRouter>
       <Routes>
+        <Route path='/profile' element={<Profile />} />
         <Route path='/dish/:restaurantId/:foodId' element={<SpecificDish />}/>
         <Route path='/search' element={<FilterPage />} />
         <Route path='/admin' element={<Admin /> }>
