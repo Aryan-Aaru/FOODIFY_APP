@@ -141,6 +141,8 @@ const Login = () => {
 
     Loginapi(data)
       .then((res) => {
+        localStorage.setItem("token", "asldfkj");
+        localStorage.setItem("userId", res.data.user_id)
         if (res.data.role === "owner") navigate("/admin");
         else if (res.data.role === "customer") navigate("/home");
       })

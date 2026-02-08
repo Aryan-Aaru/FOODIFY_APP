@@ -207,7 +207,7 @@ const HomePage = () => {
     setLoading(true);
 
     try {
-      const res = await getAllRestaurents({ page, size });
+      const res = await getAllRestaurents({ page, size, sortType });
 
       setRestaurants(res.data.content);
       setTotalPages(res.data.totalPages);
@@ -220,7 +220,7 @@ const HomePage = () => {
 
   useEffect(() => {
     fetchRestaurants();
-  }, [page]);
+  }, [page, sortType]);
 
   const handleClick = (restaurant) => {
     navigate(`/restaurent/${restaurant.id}`, { state: { restaurant } });
@@ -313,15 +313,15 @@ const HomePage = () => {
                 className="bg-gray-100 rounded-full px-4 py-1 font-semibold cursor-pointer"
               >
                 <option value="recommended">Recommended</option>
-                <option value="rating">Top Rated</option>
-                <option value="delivery">Delivery Time</option>
+                {/* <option value="rating">Top Rated</option>
+                <option value="delivery">Delivery Time</option> */}
                 <option value="popular">Most Popular</option>
               </select>
             </div>
           </div>
 
           {/* LIST */}
-          <div className="flex flex-col gap-5">
+          <div className="flex gap-5">
             {loading && <p>Loading...</p>}
 
             {!loading &&

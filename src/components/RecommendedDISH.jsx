@@ -2,9 +2,32 @@ import React from 'react'
 import { FaPlus } from "react-icons/fa6";
 import coca from '../assets/coca.avif'
 import { useNavigate } from 'react-router-dom';
+import { addToCart } from '../apis/CartAPI';
 const RecommendedDISH = ({itm, restaurantId}) => {
   const navigate = useNavigate();
   console.log(itm+" This is dish")
+  // foodExtra_id
+  let food_extras_ids = itm.food_extra.map(
+  (extra) => extra.foodExtra_id
+);
+  let crt_details = {
+    "foodId" : itm.food_id,
+    "quantity" : 1, 
+    "specialInstructions" : "",
+    "restaurentId" : restaurantId,
+    "addons" : food_extras_ids
+  }
+  let userid = localStorage.getItem("userId");
+  let handleCart = () => {
+    addToCart(crt_details, userid)
+    .then((res) => {
+      
+      alert("Success", res.data)
+    })
+    .catch((err) => {
+      alert("Eror", err.message);
+    })
+  }
   return (
    
     <>
@@ -22,7 +45,15 @@ const RecommendedDISH = ({itm, restaurantId}) => {
                   <span className="font-bold ">
                      {itm?.food_price}
                    </span>
-                  <button className="w-8 h-8 rounded-full bg-red-100 hover:bg-[#ea2a33] hover:text-white cursor-pointer text-[#ea2a33] flex items-center justify-center">
+                  <button className="w-8 h-8 rounded-full bg-red-100 hover:bg-[#ea2a33] hover:text-white cursor-pointer text-[#ea2a33] flex items-center justify-center"
+                  onClick={
+                    (e) => {
+                      e.stopPropagation();
+                      handleCart()
+                      
+                    }
+                    }
+                  >
                      <FaPlus />
                   </button>
                 </div>

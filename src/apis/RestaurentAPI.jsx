@@ -7,7 +7,8 @@ export const getAllRestaurents = (pagination) => {
         params : {
             "status" : "active",
             "page" : pagination.page, 
-            "size" : pagination.size
+            "size" : pagination.size, 
+            "sort": pagination.sortType
         }
     })
         .then((res) => {

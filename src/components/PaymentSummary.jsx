@@ -1,6 +1,7 @@
 import React from 'react'
 
-const PaymentSummary = () => {
+const PaymentSummary = ({details}) => {
+  console.log(details);
   return (
     <div>
 
@@ -14,9 +15,12 @@ const PaymentSummary = () => {
 
 <h2 className="font-semibold mb-5">Payment Summary</h2>
 <div className="space-y-3 text-sm">
-<div className="flex justify-between"><span>Subtotal</span><span>$30.48</span></div>
-<div className="flex justify-between"><span>Delivery Fee</span><span>$2.99</span></div>
-<div className="flex justify-between"><span>Tax</span><span>$1.50</span></div>
+<div className="flex justify-between"><span>Subtotal</span><span>${details.total_amount}</span></div>
+<div className="flex justify-between"><span>Delivery Fee</span><span>${details.restaurent.
+restaurent_delivary_fee
+}</span></div>
+<div className="flex justify-between"><span>Tax</span><span>${details.restaurent.restaurent_service_fee
+}</span></div>
 </div>
 
 
@@ -24,12 +28,14 @@ const PaymentSummary = () => {
 
 
 <div className="flex justify-between font-semibold text-lg mb-5">
-<span>Total</span><span>$34.97</span>
+<span>Total</span><span>${details.total_amount+details.restaurent.
+restaurent_delivary_fee+details.restaurent.restaurent_service_fee}</span>
 </div>
 
 
 <button className="w-full bg-red-500 hover:text-black cursor-pointer text-white py-4 rounded-xl font-semibold">
-Checkout $34.97
+Checkout ${details.total_amount+details.restaurent.
+restaurent_delivary_fee+details.restaurent.restaurent_service_fee}
 </button>
 
 

@@ -2,7 +2,8 @@ import { useState } from "react";
 import RadioButton from "./RadioButton";
 import { MdShoppingBag } from "react-icons/md";
 import { useEffect } from "react";
-const AddToCart = ({food, cnt, inc, dec}) => {
+import { addToCart } from "../apis/CartAPI";
+const AddToCart = ({food, cnt, restaurantId, inc, dec}) => {
 
     // Pending: Favorate button, apis, item details etc 
     // fetch specific food 
@@ -13,6 +14,29 @@ const AddToCart = ({food, cnt, inc, dec}) => {
     let [size, setSize] = useState('Regular');
     let [addOns, setAddOns] = useState(null);
     let [price, setPrice] = useState(food.food_price);
+
+
+     let food_extras_ids = food.food_extra.map(
+    (extra) => extra.foodExtra_id
+    );
+    let crt_details = {
+        "foodId" : food.food_id,
+        "quantity" : 1, 
+        "specialInstructions" : "",
+        "restaurentId" : restaurantId,
+        "addons" : food_extras_ids
+    }
+  let userid = localStorage.getItem("userId");
+
+    let handleSubmit =() => {
+        addToCart(crt_details, userid)
+            .then((res) => {
+              alert("Success", res.data)
+            })
+            .catch((err) => {
+              alert("Eror", err.message);
+            })
+    }
     
     return (
         <>
@@ -97,7 +121,7 @@ const AddToCart = ({food, cnt, inc, dec}) => {
                         <div className=" w-[30%] flex items-center justify-center h-full w-full">{cnt}</div>
                         <div className=" w-[30%] flex items-center justify-center h-full w-full cursor-pointer text-2xl hover:text-[#ee4444]" onClick={() => {(size === 'Large') ? setPrice(price+food.price+2.50): setPrice(price+food.price); inc();}}>+</div>
                     </div>
-                    <button className="flex cursor-pointer w-[65%] justify-between bg-[#ee4444] text-white hover:text-black hover:transition-all items-center rounded-xl py-3 px-6">
+                    <button className="flex cursor-pointer w-[65%] justify-between bg-[#ee4444] text-white hover:text-black hover:transition-all items-center rounded-xl py-3 px-6" onClick={handleSubmit}>
                         <div>
                             <p className="text-[10px] font-medium">ADD  TO  CART</p>
                             3.23

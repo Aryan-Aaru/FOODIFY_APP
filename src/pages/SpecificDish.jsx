@@ -72,20 +72,24 @@
 // }
 
 // export default SpecificDish;
-
 import AddToCart from "../components/AddToCart";
 import NavFilter from "../components/NavFilter";
+import NavbarOff from "../components/NavbarOff"; // fallback navbar for not logged in
 import { IoMdHeartEmpty } from "react-icons/io";
 import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { getFoodbyId } from "../apis/FoodAPI";
-import { useParams } from "react-router-dom";
 import fallbackImg from "../assets/pizzaSlice.jpg";
 
 const SpecificDish = () => {
   const { restaurantId, foodId } = useParams();
+  const navigate = useNavigate();
 
   const [food, setFood] = useState(null);
   const [count, setCount] = useState(1);
+
+  // check if user is logged in
+  const isLoggedIn = !!localStorage.getItem("token");
 
   useEffect(() => {
     getFoodbyId(restaurantId, foodId)
@@ -105,7 +109,8 @@ const SpecificDish = () => {
 
   return (
     <section className="bg-gray-50 min-h-screen">
-      <NavFilter />
+      {/* Show NavFilter if logged in, NavbarOff if not */}
+      {isLoggedIn ? <NavFilter /> : <NavbarOff />}
 
       {/* ================= CONTAINER ================= */}
       <div className="max-w-6xl mx-auto px-6 py-6 space-y-8">
@@ -152,23 +157,42 @@ const SpecificDish = () => {
               ₹ {food.food_price}
             </h2>
 
-            {/* Add To Cart Component */}
-            <AddToCart
-              food={food}
-              cnt={count}
-              inc={() => setCount(count + 1)}
-              dec={() => setCount(count > 1 ? count - 1 : 1)}
-            />
+            {/* ================= CONDITIONAL UI ================= */}
+            {isLoggedIn ? (
+              <AddToCart
+                food={food}
+                cnt={count}
+                restaurantId= {restaurantId}
+                inc={() => setCount(count + 1)}
+                dec={() => setCount(count > 1 ? count - 1 : 1)}
+              />
+            ) : (
+              <div className="flex gap-4">
+                <button
+                  onClick={() => navigate("/login")}
+                  className="bg-[#ef4444] text-white px-5 py-2 rounded-xl hover:bg-red-600 transition"
+                >
+                  Login
+                </button>
+                <button
+                  onClick={() => navigate("/signup")}
+                  className="bg-white border border-gray-300 px-5 py-2 rounded-xl hover:bg-gray-100 transition"
+                >
+                  Sign Up
+                </button>
+              </div>
+            )}
           </div>
-          </div>
-    
-         <div>
-           <h2 className="text-xl font-bold mb-4">
-             You may also like
-           </h2>
+        </div>
 
-           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-             {[1, 2, 3, 4].map((i) => (
+        {/* ================= SIMILAR DISHES ================= */}
+        <div>
+          <h2 className="text-xl font-bold mb-4">
+            You may also like
+          </h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
                 className="bg-white rounded-xl shadow hover:shadow-lg p-3 cursor-pointer transition"
