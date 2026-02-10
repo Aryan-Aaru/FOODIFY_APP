@@ -53,3 +53,12 @@ export const passwordUpdate = (forgotData) => {
         })
 }
 
+export const getUser = (userid) =>{
+    return axios.get(`${url}/${userid}`)
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => {
+            throw err.response.data;
+        })
+}

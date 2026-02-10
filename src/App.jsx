@@ -102,12 +102,11 @@ import AdminRestaurent from './pages/AdminRestaurent';
 import EarningPage from './pages/EarningPage';
 import CartItems from "./components/CartItems";
 
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-
-        {/* User / Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/profile" element={<Profile />} />
@@ -116,11 +115,8 @@ function App() {
         <Route path="/cart" element={<MyCart />} />
         <Route path="/cart/:restaurentid" element={<CartItems />} />
         <Route path="/order-confirm" element={<OrderConfirm />} />
-
-        {/* Updated Filter/Search route with query param */}
         <Route path="/filter" element={<FilterPage />} />
 
-        {/* Authentication Routes */}
         <Route path="/" element={<AuthenticatePage />}>
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
@@ -129,15 +125,24 @@ function App() {
         <Route path="/partner/login" element={<PartnerLogin />} />
         <Route path="/partner/signup" element={<PartnerSignup />} />
 
-        {/* Admin Routes */}
-        <Route path="/admin" element={<Admin />}>
+        {/* <Route path="/admin" element={<Admin />}>
           <Route index element={<AdminDasboard />} />
           <Route path="dashboard" element={<AdminDasboard />} />
           <Route path="orders" element={<OrderManagement />} />
           <Route path="menu" element={<MenuPage />} />
           <Route path="restaurants" element={<AdminRestaurent />} />
           <Route path="earnings" element={<EarningPage />} />
+        </Route> */}
+        <Route path="/admin" element={<Admin />}>
+          <Route path="dashboard" element={<AdminDasboard />} />
+          <Route path="orders" element={<OrderManagement />} />
+          <Route path="restaurants" element={<AdminRestaurent />} />
+
+          <Route path="restaurants/:restaurantId/menu" element={<MenuPage />} />
+
+          <Route path="earnings" element={<EarningPage />} />
         </Route>
+
 
       </Routes>
     </BrowserRouter>

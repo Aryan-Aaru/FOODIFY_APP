@@ -5,7 +5,7 @@ import {
   Search, User, ShoppingBag
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-const UserProfileBar = () => {
+const UserProfileBar = ({usr}) => {
     const navigate = useNavigate()
     return (
         <>
@@ -24,8 +24,8 @@ const UserProfileBar = () => {
                 </div>
                 </div>
                 
-                <h2 className="text-2xl font-black">Alex Johnson</h2>
-                <p className="text-gray-400 text-sm mb-4">+1 (555) 012 3466</p>
+                <h2 className="text-2xl font-black">{usr?.name}</h2>
+                <p className="text-gray-400 text-sm mb-4">+1 {usr?.phone_no}</p>
                 
                 {/* <div className="bg-amber-50 text-amber-600 px-4 py-1.5 rounded-full text-[10px] font-black flex items-center gap-1.5 mb-8 uppercase tracking-widest">
                 <Star size={12} className="fill-current" /> Gold Member

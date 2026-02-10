@@ -69,7 +69,7 @@ const AdminDasboard = () => {
 
             <section>
                 <div className="bg-white rounded-xl p-6 shadow w-full">
-                {/* Header */}
+        
                 <div className="flex px-10 justify-between items-center mb-4">
                     <div>
                     <h2 className="text-lg font-semibold">Revenue Overview</h2>
@@ -93,7 +93,6 @@ const AdminDasboard = () => {
                 <div className="h-[260px]">
                     <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={revenueData}>
-                        {/* Gradient */}
                         <defs>
                         <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="0%" stopColor="#2563eb" stopOpacity={0.4} />

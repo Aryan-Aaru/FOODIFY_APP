@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaArrowLeftLong } from "react-icons/fa6";
 // import {useNavigate } from 'react-router-dom'
 import { 
@@ -10,14 +10,28 @@ import {
 
 import UserProfileBar from '../components/UserProfileBar';
 import { useNavigate } from 'react-router-dom';
+import { getUser } from '../apis/UserApi';
 
 
 
 const Profile = () => {
-  const [view, setView] = useState('profile'); // 'profile', 'address', 'payment', 'history', 'support'
+  const [view, setView] = useState('profile'); 
   // const navigate = useNavigate();
   const navigate = useNavigate();
-  // --- Wrapper for Sub-Pages to keep UI consistent ---
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    if(!user){
+      return;
+    }
+    getUser(localStorage.getItem("userId"))
+      .then((res) => {
+        setUser(res.data)
+      })
+      .catch((err) => {
+        alert(err.message);
+      })
+  },[])
   const SubPageWrapper = ({ title, children }) => (
     <div className="animate-in slide-in-from-right-4 duration-300">
       <button 
@@ -35,7 +49,6 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen static   bg-[#F9FAFC] text-slate-900 border font-sans pb-20">
-      {/* --- TOP NAVIGATION BAR --- */}
       {/* <nav className="bg-white border-b border-gray-100 px-6 py-4 mb-8 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="bg-red-500 p-2 rounded-lg text-white font-bold">FE</div>
@@ -62,15 +75,12 @@ const Profile = () => {
 
       <div className="max-w-6xl mt-10  mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        {/* --- LEFT SIDEBAR (Profile Card) --- */}
-        <UserProfileBar />
+        <UserProfileBar usr={user} />
 
-        {/* --- RIGHT CONTENT AREA --- */}
         <div className="lg:col-span-9 space-y-6">
           
           {view === 'profile' && (
             <>
-              {/* Account Section */}
               <section className="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden">
                 <div className="p-8 pb-4 flex justify-between items-center">
                   <h3 className="text-xl font-black">Account</h3>
@@ -84,7 +94,6 @@ const Profile = () => {
                 </div>
               </section>
 
-              {/* General Section */}
               <section className="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden">
                 <div className="p-8 pb-4 font-black text-xl">General</div>
                 <div className="px-4 pb-4">
@@ -100,7 +109,6 @@ const Profile = () => {
                 </div>
               </section>
 
-              {/* Recent Favorites */}
               <section className="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 p-8">
                 <h3 className="text-xl font-black mb-6">Recent Favorites</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -111,8 +119,6 @@ const Profile = () => {
               </section>
             </>
           )}
-
-          {/* --- SUB PAGES --- */}
           {view === 'address' && (
             <SubPageWrapper title="My Addresses">
               <div className="space-y-4">
@@ -155,7 +161,6 @@ const Profile = () => {
   );
 };
 
-// --- Sub-Components ---
 
 const MenuRow = ({ icon, title, subtitle, isSpecial, onClick }) => (
   <div 
